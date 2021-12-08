@@ -1,5 +1,8 @@
 global class AccountAndContactInfoInsert {
 
+    global AccountAndContactInfoInsert(){
+        
+    }
     global class AccountAndContactInfo{
         webservice String accName;
         webservice String accNumber;
