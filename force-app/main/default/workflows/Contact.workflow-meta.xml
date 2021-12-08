@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Welcome_Email_Alert</fullName>
+        <description>Welcome Email Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>rishireddysf@q2.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/SalesNewCustomerEmail</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Update_FN</fullName>
+        <field>FirstName</field>
+        <formula>&apos;Naga&apos;</formula>
+        <name>Update FN</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_LN</fullName>
+        <field>LastName</field>
+        <formula>&apos;Rishi&apos;</formula>
+        <name>Update LN</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Last_NAme</fullName>
+        <field>LastName</field>
+        <formula>&apos;Naga&apos;</formula>
+        <name>Update Last NAme</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>Rule1</fullName>
+        <actions>
+            <name>Update_FN</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Contact.LastName</field>
+            <operation>equals</operation>
+            <value>Rishi</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Rule2</fullName>
+        <actions>
+            <name>Welcome_Email_Alert</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Update_LN</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Contact.FirstName</field>
+            <operation>equals</operation>
+            <value>Naga</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

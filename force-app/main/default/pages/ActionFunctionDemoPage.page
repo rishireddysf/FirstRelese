@@ -1,0 +1,52 @@
+<apex:page controller="SearchPageController">
+    <script>
+    function confirmDelete(){
+      return  confirm("do you want to delete records??");
+    }
+   function callserverMethod(){
+       var seachString  = document.getElementById("serchStringId").value;
+       console.log('seachString....'+seachString);
+       callsearchAccount(seachString);
+   }
+   </script>
+    <apex:form >
+        <apex:actionFunction name="callsearchAccount" action="{!searchAccount}" oncomplete="true" reRender="accListId" status="counterStatus">
+            <apex:param assignTo="{!searchString}" name="searchString" value=""/>
+        </apex:actionFunction>
+        <apex:actionStatus id="counterStatus" >
+            <apex:facet name="start">
+                <apex:outputPanel >
+                    <img src="/img/loading32.gif" width="25" height="25" />
+                    <apex:outputLabel value="Loading..."/>
+                </apex:outputPanel>            
+            </apex:facet>
+        </apex:actionStatus>
+        Search String:<input id="serchStringId" type ="text"  onchange="callserverMethod();"/>
+        <!--Search String:<apex:inputText value="{!searchString}" onchange="callserverMethod();" />
+        <apex:commandButton action="{!searchAccount}" value="Search"/>-->
+        
+        <apex:pageBlock id="accListId">
+            <apex:pageBlockTable value="{!accList}" var="accRec">
+                 <apex:column headerValue="Action">
+                    <!--<apex:commandLink value="Edit" action="{!editRecord}" target="_blank">
+                          <apex:param assignTo="{!selectedEditRecordId}" value="{!accRec.Id}" name="selectedEditRecordId" />
+                     </apex:commandLink>-->
+                     <a href="/{!accRec.Id}/e"  target="_blank">Edit</a>
+                     |
+                     <apex:commandLink value="Del" action="{!deleteRecord}" onclick="confirmDelete()">
+                           <apex:param assignTo="{!selectedDelRecordId}" value="{!accRec.Id}" name="selectedDelRecordId" />
+                     </apex:commandLink>
+                     
+                </apex:column>
+                <apex:column headerValue="Acc Name">
+                    <!-- <apex:commandLink value="{!accRec.Name}" action="{!redirectToRecord}" target="_blank">
+                         <apex:param assignTo="{!selectedRecordId}" value="{!accRec.Id}" name="selectedRecordId"/>
+                         <apex:param assignTo="{!selectedAccNum}" value="{!accRec.AccountNUmber}" name="selectedAccNum"/>
+                    </apex:commandLink>-->
+                    <a href="/{!accRec.Id}" target="_blank">{!accRec.Name}</a>
+                </apex:column>
+                <apex:column value="{!accRec.AccountNumber}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

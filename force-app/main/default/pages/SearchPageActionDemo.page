@@ -1,0 +1,42 @@
+<apex:page controller="SearchPageController"  renderAs="">
+   <script>
+    function confirmDelete(){
+      return  confirm("do you want to delete records??");
+       
+    }
+   </script>
+    <apex:pageMessages ></apex:pageMessages>
+    <apex:form >
+        
+        Search String:<apex:inputText value="{!searchString}"/>
+        <apex:commandButton action="{!searchAccount}" value="Search"/>
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!accList}" var="accRec">
+                 <apex:column headerValue="Action">
+                    <!--<apex:commandLink value="Edit" action="{!editRecord}" target="_blank">
+                          <apex:param assignTo="{!selectedEditRecordId}" value="{!accRec.Id}" name="selectedEditRecordId" />
+                     </apex:commandLink>-->
+                     <a href="/{!accRec.Id}/e"  target="_blank">Edit</a>
+                     |
+                     <apex:commandLink value="Del" action="{!deleteRecord}" onclick="confirmDelete()">
+                           <apex:param assignTo="{!selectedDelRecordId}" value="{!accRec.Id}" name="selectedDelRecordId" />
+                     </apex:commandLink>
+                     
+                </apex:column>
+                <apex:column headerValue="Acc Name">
+                    <!-- <apex:commandLink value="{!accRec.Name}" action="{!redirectToRecord}" target="_blank">
+                         <apex:param assignTo="{!selectedRecordId}" value="{!accRec.Id}" name="selectedRecordId"/>
+                         <apex:param assignTo="{!selectedAccNum}" value="{!accRec.AccountNUmber}" name="selectedAccNum"/>
+                    </apex:commandLink>-->
+                    <a href="/{!accRec.Id}" target="_blank">{!accRec.Name}</a>
+                </apex:column>
+                <apex:column value="{!accRec.AccountNumber}" rendered="{!$ObjectType.Account.fields.AccountNumber.Accessible}"/>
+            </apex:pageBlockTable>
+            <!--<apex:outputText rendered="{!isRecordsExists}"> no records to disply </apex:outputText>-->
+            <apex:outputText rendered="{!accList.size == 0}"> no records to disply </apex:outputText>
+            <apex:repeat value="{!accList}" var="accRec">
+            	Test - {!accRec.AccountNumber}
+            </apex:repeat>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

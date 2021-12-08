@@ -1,0 +1,42 @@
+<apex:component controller="SearchComponentDemoController">
+    <apex:attribute name="object" type="String" default="Account"
+                    description="The type of record we are searching." />
+    <apex:attribute name="fieldAPIs" type="String" 
+                    description="Please enter API  Names followd by , seperated if you have more fields example:AccountNumber,Email" />
+    <script type="text/javascript">
+    function searchResults(){
+        var searchString = document.getElementById('inputStringId').value;
+        Visualforce.remoting.Manager.invokeAction(
+            '{!$RemoteAction.SearchComponentDemoController.getAccount}',
+            searchString, '{!object}','{!fieldAPIs}',
+            function(result, event){
+                if (event.status){
+                    var htmlTable = '<table border=1>';
+                    for(var i = 0 ;i<result.length ; i++){
+                        console.log('record...'+result[i]);
+                        console.log('record...'+JSON.stringify(result[i]));
+                        console.log('record Name..'+result[i].Name);
+                        htmlTable =  htmlTable + '<tr><td>'+result[i].Name+'</td>';
+                        console.log('{!object}');
+                        if('{!object}' == 'Account'){
+                            console.log('inside logic...');
+                            htmlTable =  htmlTable + '<td>'+result[i].AccountNumber+'</td>';
+                        }
+                        htmlTable =  htmlTable + '</tr>';
+                    }
+                    htmlTable = htmlTable+'</table>';
+                    console.log('htmlTable...'+htmlTable);
+                    document.getElementById('accTableContent').innerHTML = htmlTable;
+                }else{
+                    
+                }
+            }
+        );
+    }
+    </script> 
+    
+    Search String :<input type="text" id="inputStringId"/>
+    <input type="button" value="Search" onclick="searchResults()"/>
+    <div id="accTableContent" class="check"/>
+    
+</apex:component>

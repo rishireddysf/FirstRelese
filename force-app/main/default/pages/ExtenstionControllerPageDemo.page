@@ -1,0 +1,10 @@
+<apex:page standardController="Account"  showHeader="false" extensions="ContactInfoClass,ExtensionController2">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!ctList}" var="ctRec">
+                <apex:column value="{!ctRec.Name}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        <apex:commandButton action="{!save}" value="Submit"/>
+    </apex:form>
+</apex:page>

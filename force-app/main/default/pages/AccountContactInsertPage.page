@@ -1,0 +1,27 @@
+<apex:page controller="AccountContactInsertController">
+    <apex:pageMessages ></apex:pageMessages>
+    <apex:outputText value="{!successMessage}"></apex:outputText>
+     <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!saveAccount}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Account Information">
+                <apex:inputField value="{!acc.Name}"/>
+                 <apex:inputField value="{!acc.AccountNumber}" />
+                 <apex:inputField value="{!acc.site}" />
+                <apex:inputField value="{!acc.Active__c}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Contact Information">
+                <apex:inputField value="{!ct.LastName}"/>
+                 <apex:inputField value="{!ct.FirstName}" />
+                 <apex:inputField value="{!ct.Email}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Opportunity Information">
+                <apex:inputField value="{!opp.Name}"/>
+                 <apex:inputField value="{!opp.CloseDate}" />
+                 <apex:inputField value="{!opp.StageName}" />
+            </apex:pageBlockSection>
+         </apex:pageBlock>
+    </apex:form>
+</apex:page>

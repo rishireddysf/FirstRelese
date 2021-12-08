@@ -1,0 +1,31 @@
+<apex:page controller="WrapperDemoController">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!deleteSelectedRecords}" value="Delete"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!accWrapperList}"  var="accVar">
+                <apex:column >
+                    <apex:inputCheckbox value="{!accVar.isSelected}"/>
+                </apex:column>
+                <apex:column value="{!accVar.accRec.Name}"/>
+                <apex:column value="{!accVar.accRec.AccountNUmber}"/>
+                <apex:column headerValue="Contacts">
+                    <apex:repeat value="{!accVar.ctList}" var="contactRec">
+                        {!contactRec.Name},
+                    </apex:repeat>
+                </apex:column>
+                <apex:column headerValue="Opportunities">
+                    <apex:repeat value="{!accVar.oppList}" var="oppRec">
+                        {!oppRec.Name},
+                    </apex:repeat>
+                </apex:column>
+                <apex:column headerValue="Casec">
+                    <apex:repeat value="{!accVar.caseList}" var="caseRec">
+                        <a href="/{!caseRec.Id}" target="_blank">{!caseRec.CaseNumber},</a>
+                    </apex:repeat>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

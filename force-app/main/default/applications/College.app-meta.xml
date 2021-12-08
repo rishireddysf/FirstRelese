@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>standard-home</defaultLandingTab>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>College</label>
+    <logo>College/College_App_Image.png</logo>
+    <tabs>Department__c</tabs>
+    <tabs>Student__c</tabs>
+    <tabs>DeptStudent__c</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>BGV__c</tabs>
+    <tabs>PIN_Codes__c</tabs>
+    <tabs>Onboarding_Steps__c</tabs>
+    <tabs>Account_Insert</tabs>
+    <tabs>User_Logins__c</tabs>
+    <tabs>Page_Audit__c</tabs>
+</CustomApplication>

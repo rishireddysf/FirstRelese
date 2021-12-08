@@ -1,0 +1,19 @@
+<apex:page standardController="Account" title="Account INsert page" showHeader="true" sidebar="false">
+    <apex:slds />
+    <apex:pageMessages ></apex:pageMessages>
+    <apex:form >
+        <apex:pageBlock title="Account Create"  >
+            <apex:pageBlockButtons location="both">
+                <apex:commandButton value="Save" action="{!save}"/>
+                <apex:commandButton value="Delete" action="{!delete}"/>
+                <apex:commandButton value="Edit" action="{!edit}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="2" title="Account Information" collapsible="true" >
+                <apex:inputField value="{!Account.Active__c}"/>
+                <apex:inputField value="{!Account.SLAExpirationDate__c}" />
+                <apex:inputField value="{!Account.site}"/>
+                <apex:inputField value="{!Account.parentId}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

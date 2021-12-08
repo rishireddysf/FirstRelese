@@ -1,0 +1,57 @@
+<template>
+    searchValue::  {searchValue}
+ <div class="slds-m-around_medium">
+      <div class="slds-m-bottom_small">
+          <lightning-input type="search"
+             value={searchValue}
+             label="Enter Account Name"
+             onchange={searchKeyword}
+             ></lightning-input>
+       </div>
+       <lightning-button label="Search"
+          onclick={handleSearchKeyword}
+          variant="brand"></lightning-button>
+          
+          <!--<table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small">
+          <thead>
+             <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                   <div class="slds-truncate" title="Account Name">Account Name</div>
+                </th>
+                <th class="" scope="col">
+                   <div class="slds-truncate" title="Account Number">Account Number</div>
+                </th>
+                <th class="" scope="col">
+                   <div class="slds-truncate" title="Website">Website</div>
+                </th>
+             </tr>
+          </thead>
+          
+          <tbody>   
+             <template for:each={accountList} for:item="acc" for:index="index">
+                  
+                <tr class="slds-hint-parent" key={acc.Id}>
+                   <td>
+                      <div class="slds-truncate">{acc.Name}</div>
+                   </td>
+                   <td>
+                      <div class="slds-truncate">{acc.AccountNumber}</div>
+                   </td>
+                   <td>
+                      <div class="slds-truncate">{acc.Website}
+                      </div>
+                   </td>
+                </tr>
+             </template>
+          </tbody>
+       </table>-->
+     
+        <lightning-datatable
+                key-field="id"
+                data={accountList}
+                columns={columns}>
+        </lightning-datatable>
+   
+      </div> 
+      
+</template>

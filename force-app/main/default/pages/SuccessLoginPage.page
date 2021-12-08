@@ -1,0 +1,7 @@
+<apex:page controller="SuccessLoginPageController">
+     successfully loggedin.
+    {!userName}/{!psw}
+    --------------------------------
+    {!$CurrentPage.parameters.un}
+     {!$CurrentPage.URL}
+</apex:page>

@@ -1,0 +1,4 @@
+<apex:page > 
+    <c:SearchComponentDemo object="Opportunity" fieldAPIs="StageName,CloseDate"/>
+    <c:SearchComponentDemo object="Contact" fieldAPIs="Email"/>
+</apex:page>

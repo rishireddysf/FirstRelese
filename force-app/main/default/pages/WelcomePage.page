@@ -1,0 +1,15 @@
+<apex:page >
+    <b style="background-color:red;color:white;font-size: 28px;font-family: fantasy;">welcome to SFDC</b>
+    <input type="aaaa" value="Save Me" onclick="alert('heelo')"></input>
+<table border="1">
+    
+    <tr>
+        <td>sdsdad</td>
+        <td>sdsdad</td>
+    </tr>
+    <tr>
+        <td>sdsdad</td>
+        <td>sdsdad</td>
+    </tr>
+</table>
+</apex:page>

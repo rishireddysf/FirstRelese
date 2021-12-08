@@ -1,0 +1,15 @@
+<apex:page controller="MultiRecordDeleteDemoController">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!deleteSelectedRecords}" value="Delete"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!accList}"  var="accRec">
+                <apex:column >
+                    <apex:inputCheckbox value="{!accRec.SelectedRecord__c}"/>
+                </apex:column>
+                <apex:column value="{!accRec.Name}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

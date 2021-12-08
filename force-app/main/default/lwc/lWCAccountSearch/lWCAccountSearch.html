@@ -1,0 +1,26 @@
+<template>
+    <lightning-card  title="Account Search">
+            <p class="slds-p-horizontal_small">
+                 <lightning-input type="text" value={searchValue} label="Enter Account Name" onchange={searchKeyword}>
+                 </lightning-input>
+            </p>
+             <lightning-button label="Search"
+          onclick={handleSearchKeyword}
+          variant="brand"></lightning-button>
+    </lightning-card>
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small">
+          <thead>
+             <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                   <div class="slds-truncate" title="Account Name">Account Name</div>
+                </th>
+                <th class="" scope="col">
+                   <div class="slds-truncate" title="Account Number">Account Number</div>
+                </th>
+                <th class="" scope="col">
+                   <div class="slds-truncate" title="Website">Website</div>
+                </th>
+             </tr>
+          </thead>
+    </table>
+</template>

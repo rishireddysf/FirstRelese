@@ -1,0 +1,8 @@
+<apex:component controller="SampleVFComponentController">
+    <apex:attribute name="Val1" description="This is the value for the component."
+        type="Integer" assignTo="{!value1}"/>
+   <apex:attribute name="Val2" description="This is the value for the component."
+        type="Integer" default="2" assignTo="{!value2}"/> 
+    {!value1}
+    {!value2}
+</apex:component>

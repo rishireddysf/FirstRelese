@@ -1,0 +1,20 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Parent And Child Component Communication" icon-name="standard:account">
+        <p class="slds-p-horizontal_small">
+            Parent Component
+            <c-child-component name='Nagalingeswara Reddy Vempalli' user-name='BABU@GMAIL.COM'></c-child-component>
+        </p>
+        <p slot="footer">
+            <lightning-button variant="brand" label="Call Child Method" onclick={callChild}></lightning-button>
+        </p>
+    </lightning-card>
+    <lightning-card title="Getting Data From Child">
+    <p class="slds-p-horizontal_small">
+      <lightning-progress-bar
+        value={progressValue}
+        size="large"
+      ></lightning-progress-bar>
+      <c-child-component onprogressvaluechange={hanldeProgressValueChange}></c-child-component>
+    </p>
+  </lightning-card>
+</template>

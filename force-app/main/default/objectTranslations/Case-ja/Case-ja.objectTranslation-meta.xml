@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Case Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Internal Issues Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Issue Info</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>New Requirement Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Requirement Info</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>New Software Request Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Software Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>New User Creation Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New User Info</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>LogACall</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>NewChildCase</name>
+    </quickActions>
+</CustomObjectTranslation>

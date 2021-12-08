@@ -1,0 +1,10 @@
+<apex:page controller="LoginController" action="{!updateAudit}">
+    <apex:pageMessages ></apex:pageMessages>
+    <apex:form >
+        <apex:pageBlock >
+           User Name: <apex:inputText value="{!userName}" label=""/>
+           Password: <apex:inputText value="{!password}" label=""/>
+        </apex:pageBlock>
+        <apex:commandButton value="Login" action="{!login}"/>
+    </apex:form>
+</apex:page>

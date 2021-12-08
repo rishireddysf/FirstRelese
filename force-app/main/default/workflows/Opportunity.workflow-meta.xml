@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Update_Opp_Amount</fullName>
+        <field>Amount</field>
+        <formula>2000</formula>
+        <name>Update Opp Amount</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Opp_Won_Date_with_current_date</fullName>
+        <field>Opp_Winning_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Update Opp Won Date with current date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Order_number</fullName>
+        <field>OrderNumber__c</field>
+        <formula>&apos;123454&apos;</formula>
+        <name>Update Order number</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>Send_INfo_to_external_system</fullName>
+        <apiVersion>52.0</apiVersion>
+        <endpointUrl>https://q1com-dev-ed.my.salesforce.com/services/apexrest/sfdc</endpointUrl>
+        <fields>Amount</fields>
+        <fields>CampaignId</fields>
+        <fields>CloseDate</fields>
+        <fields>ContactId</fields>
+        <fields>ContractId</fields>
+        <fields>CreatedById</fields>
+        <fields>Id</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>rishireddysf@q2.com</integrationUser>
+        <name>Send INfo to external system</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>Create Task when Opp Lost</fullName>
+        <actions>
+            <name>Send_INfo_to_external_system</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <actions>
+            <name>Quick_Discussion</name>
+            <type>Task</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(!$Setup.Bypass_Validation_Rules__c.Opportunity_Flow__c ,
+ ISPICKVAL( StageName , &apos;Closed Won&apos;) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Populate Order number</fullName>
+        <actions>
+            <name>Update_Order_number</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.DeliveryInstallationStatus__c</field>
+            <operation>equals</operation>
+            <value>In progress</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send Close Date Remainders</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>notEqual</operation>
+            <value>Closed Won,Closed Lost</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.CloseDate</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Close_Date_Remainder_5_Days</name>
+                <type>Task</type>
+            </actions>
+            <offsetFromField>Opportunity.CloseDate</offsetFromField>
+            <timeLength>-5</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Close_Date_Remainder</name>
+                <type>Task</type>
+            </actions>
+            <offsetFromField>Opportunity.CloseDate</offsetFromField>
+            <timeLength>-7</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <offsetFromField>Opportunity.CloseDate</offsetFromField>
+            <timeLength>-3</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Update Opp Won Date</fullName>
+        <actions>
+            <name>Update_Opp_Amount</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_Opp_Won_Date_with_current_date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(!$Setup.Bypass_Validation_Rules__c.Opportunity_Flow__c ,  ISPICKVAL(StageName  , &apos;Closed Won&apos;))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <tasks>
+        <fullName>Close_Date_Remainder</fullName>
+        <assignedTo>saikumar60.p@gmail.com.q2</assignedTo>
+        <assignedToType>user</assignedToType>
+        <dueDateOffset>7</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Opportunity.CloseDate</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Not Started</status>
+        <subject>Close Date Remainder</subject>
+    </tasks>
+    <tasks>
+        <fullName>Close_Date_Remainder_5_Days</fullName>
+        <assignedTo>saikumar60.p@gmail.com.q2</assignedTo>
+        <assignedToType>user</assignedToType>
+        <dueDateOffset>5</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Opportunity.CloseDate</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Not Started</status>
+        <subject>Close Date Remainder 5 Days</subject>
+    </tasks>
+    <tasks>
+        <fullName>Quick_Discussion</fullName>
+        <assignedTo>naveensf3323@gmail.com.q2</assignedTo>
+        <assignedToType>user</assignedToType>
+        <dueDateOffset>2</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Not Started</status>
+        <subject>Quick Discussion</subject>
+    </tasks>
+</Workflow>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingOwnerRules>
+        <fullName>Share_Record_Owned_by_APC_Sales_Mng_with_EMEA_Sales_Mang</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share Record Owned by APC Sales Mng with EMEA Sales Mang</label>
+        <sharedTo>
+            <role>EMEA_Sales_Manager</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>APAC_Sales_Manager</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_Record_Owned_by_EMEA_Sales_and_subordinates_with_EMEA_Sales_Mang</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Share Record Owned by EMEA Sales and subordinates with EMEA Sales Mang</label>
+        <sharedTo>
+            <roleAndSubordinates>EMEA_Sales_Manager</roleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <role>APAC_Sales_Manager</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>share_EMEA_SAles_mNg_with_India_Sales</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>share EMEA SAles mNg with India Sales</label>
+        <sharedTo>
+            <role>India_Sales</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>EMEA_Sales_Manager</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

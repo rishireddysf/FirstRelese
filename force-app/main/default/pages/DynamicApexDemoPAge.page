@@ -1,0 +1,7 @@
+<apex:page controller="DynamicApexDemoController">
+    <apex:form >
+        <apex:selectList size="1" value="{!selectedStatus}" onchange="">
+            <apex:selectOptions value="{!onbordingList }"/>
+        </apex:selectList>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,39 @@
+<apex:page controller="SearchPageController">
+    <apex:form >
+        Search String:<apex:inputText value="{!searchString}"/>
+        <apex:commandButton action="{!searchAccount}" value="Search"/>
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!accList}" var="accRec">
+                <apex:column value="{!accRec.Name}"/>
+                <apex:column value="{!accRec.AccountNumber}"/>
+            </apex:pageBlockTable>
+            <apex:dataTable value="{!accList}" var="accRec">
+                <apex:column >
+                    <apex:facet name="header">Client Name</apex:facet>
+                    <apex:outputText value="{!accRec.Name}"/>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Account Number</apex:facet>
+                    <apex:outputText value="{!accRec.AccountNumber}"/>
+                </apex:column>
+            </apex:dataTable>
+            <apex:dataList value="{!accList}" var="accRec" type="square">
+                <apex:outputText value="{!accRec.Name}"/> having with account Number : <apex:outputText value="{!accRec.AccountNumber}"/>
+            </apex:dataList>
+            
+            <table border="1" style="background-color:red;">
+                <tr>  
+                    <td> Name</td>
+                    <td> Account Number</td>
+                </tr>
+                <apex:repeat value="{!accList}" var="accRec">
+                    <tr>
+                        <td>{!accRec.Name}</td>
+                        <td>{!accRec.AccountNumber}</td>
+                    </tr>
+                </apex:repeat>
+            </table>
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>

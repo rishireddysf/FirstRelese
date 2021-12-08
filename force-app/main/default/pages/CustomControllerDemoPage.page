@@ -1,0 +1,21 @@
+<apex:page controller="CustomControllerDemo" docType="html-5.0">
+    <apex:pageMessages ></apex:pageMessages>
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!saveAccount}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Account Information">
+                <apex:inputText value="{!accName}" label="Account Name:"/>
+                <apex:input type="date" value="{!dob}"/>
+                <apex:inputText value="{!accNumber}" label="Account Number:"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Contact Information">
+                <apex:inputText value="{!ctFirstName}" label="First Name:"/>
+                <apex:inputText value="{!ctLastName}" label="Last Name:"/>
+                <apex:inputText value="{!ctEmail}" label="Email:"/>
+                <apex:inputField value="{!opp.closeDate}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
