@@ -1,4 +1,7 @@
 public class DML_InsertDemo {
+    public DML_InsertDemo(){
+        
+    }
     public static void insertAccount(){
         Account accRec = new Account();
         accRec.Name = 'Test Apex Record 1';
