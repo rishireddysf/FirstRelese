@@ -1,7 +1,5 @@
 public class DeleteDMLDemo {
-    public DeleteDMLDemo(){
-
-    }
+   
     public static void deleteAccountRecords(){
         List<Account> accList = [Select Id,(Select Id from Contacts),(Select Id from Opportunities),(Select Id from Cases) from Account];
         List<Account> deleteAccountList = new List<Account>();
